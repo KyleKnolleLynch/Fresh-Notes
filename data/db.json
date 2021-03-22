@@ -1,0 +1,28 @@
+{
+  "notes": [
+    {
+      "title": "Take out the trash",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "category": "reminders",
+      "id": 1
+    },
+    {
+      "title": "Refactor my vanilla js portfolio page",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "category": "work",
+      "id": 2
+    },
+    {
+      "title": "Go for a walk",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "category": "todos",
+      "id": 3
+    },
+    {
+      "title": "Hope",
+      "details": "Try and get good.",
+      "category": "todos",
+      "id": 4
+    }
+  ]
+}
