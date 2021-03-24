@@ -10,6 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Radio from '@material-ui/core/Radio'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles({
   field: {
@@ -21,6 +22,7 @@ const useStyles = makeStyles({
 
 const Create = () => {
   const classes = useStyles()
+  const history = useHistory()
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
   const [titleError, setTitleError] = useState(false)
@@ -44,6 +46,7 @@ const Create = () => {
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({ title, details, category }),
           })
+          history.push('/')
           const data = await res.json()
           return data
         } catch (err) {
