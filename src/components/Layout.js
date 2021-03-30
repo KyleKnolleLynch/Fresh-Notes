@@ -5,8 +5,16 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons'
+import {
+  AddCircleOutlineOutlined,
+  CallReceived,
+  SubjectOutlined,
+} from '@material-ui/icons'
 import { useHistory, useLocation } from 'react-router'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import { format } from 'date-fns'
+import Avatar from '@material-ui/core/Avatar'
 
 const drawerWidth = 240
 
@@ -32,6 +40,16 @@ const useStyles = makeStyles(theme => {
     title: {
       padding: theme.spacing(2),
     },
+    appbar: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+    toolbar: theme.mixins.toolbar,
+    date: {
+      flexGrow: 1,
+    },
+    avatar: {
+      margin: theme.spacing(2),
+    },
   }
 })
 
@@ -55,7 +73,15 @@ const Layout = ({ children }) => {
 
   return (
     <div className={classes.root}>
-      {/* App Bar */}
+      <AppBar className={classes.appbar} elevation={0}>
+        <Toolbar>
+          <Typography className={classes.date}>
+            Today is {format(new Date(), 'do MMMM Y')}
+          </Typography>
+          <Typography>Kyle</Typography>
+          <Avatar src='/avatar-placeholder.png' className={classes.avatar} />
+        </Toolbar>
+      </AppBar>
 
       <Drawer
         className={classes.drawer}
@@ -64,7 +90,9 @@ const Layout = ({ children }) => {
         classes={{ paper: classes.drawerPaper }}
       >
         <div>
-          <Typography variant='h5' className={classes.title}>Fresh Notes</Typography>
+          <Typography variant='h5' className={classes.title}>
+            Fresh Notes
+          </Typography>
         </div>
 
         <List>
@@ -82,7 +110,10 @@ const Layout = ({ children }) => {
         </List>
       </Drawer>
 
-      <div className={classes.page}>{children}</div>
+      <div className={classes.page}>
+        <div className={classes.toolbar}></div>
+        {children}
+      </div>
     </div>
   )
 }

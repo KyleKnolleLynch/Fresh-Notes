@@ -17,6 +17,12 @@
       "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       "category": "todos",
       "id": 3
+    },
+    {
+      "title": "pay bills",
+      "details": "pay my monthly bills",
+      "category": "money",
+      "id": 4
     }
   ]
 }
