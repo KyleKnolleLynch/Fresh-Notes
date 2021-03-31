@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import NotesCard from '../components/NotesCard'
 
 import Container from '@material-ui/core/Container'
+import Masonry from 'react-masonry-css'
 
 const Notes = () => {
   const [notes, setNotes] = useState([])
@@ -22,22 +23,32 @@ const Notes = () => {
 
   const handleDelete = async id => {
     await fetch(`http://localhost:8000/notes/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
 
     const newNotes = notes.filter(note => note.id !== id)
     setNotes(newNotes)
   }
 
+  const breakpoints = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  }
+
   return (
     <Container>
-      <Grid container spacing={3}>
+      <Masonry
+        breakpointCols={breakpoints}
+        className='my-masonry-grid'
+        columnClassName='my-masonry-grid_column'
+      >
         {notes.map(note => (
-          <Grid item xs={12} md={6} lg={4} key={note.id}>
+          <div key={note.id}>
             <NotesCard note={note} handleDelete={handleDelete} />
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </Masonry>
     </Container>
   )
 }
